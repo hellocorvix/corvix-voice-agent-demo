@@ -246,7 +246,7 @@ async def run_web_bot(websocket: WebSocket):
     # GoogleLLMService.Settings(model=...); it still works on pinned 1.12.0.
     llm = GoogleLLMService(
         api_key=GEMINI_API_KEY,
-        model="gemini-2.5-flash",
+        model="gemini-3.8-flash",
         system_instruction=SYSTEM_PROMPT,
     )
 
