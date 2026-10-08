@@ -3,7 +3,7 @@
 
 Visitor calls the Twilio number from their own phone
   -> Twilio Media Streams (websocket) -> Deepgram Nova-3 STT (language="ur")
-  -> Gemini (gemini-3.8-flash) with the Dehli Darbar Kabab House booking prompt
+  -> Gemini (gemini-2.5-flash) with the Dehli Darbar Kabab House booking prompt
   -> ElevenLabs TTS (Urdu voice) -> back to the caller.
 
 Run:  python agent.py        (needs .env; see README.md)
@@ -162,7 +162,7 @@ async def run_bot(websocket: WebSocket, stream_sid: str, call_sid: str | None):
     # GoogleLLMService.Settings(model=...); it still works on pinned 1.12.0.
     llm = GoogleLLMService(
         api_key=GEMINI_API_KEY,
-        model="gemini-3.8-flash",
+        model="gemini-2.5-flash",
         system_instruction=SYSTEM_PROMPT,
     )
 
