@@ -1,0 +1,9 @@
+# Keep secrets and local junk out of the Docker build context.
+venv/
+.venv/
+.env
+__pycache__/
+*.pyc
+*.pyo
+.git/
+.gitignore

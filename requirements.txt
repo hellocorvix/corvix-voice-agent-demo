@@ -1,0 +1,24 @@
+# Corvix voice agent — pinned, mutually compatible versions (verified 2026-10-08).
+# pipecat-ai 1.12.0 is the latest release; extras below were checked against the
+# 1.12.0 wheel METADATA so every service in agent.py is actually installed.
+
+# Core framework + the exact services agent.py uses:
+#   twilio      -> TwilioFrameSerializer (Media Streams)
+#   deepgram    -> DeepgramSTTService (pulls deepgram-sdk>=6.1.1,<8)
+#   elevenlabs  -> ElevenLabsTTSService
+#   google      -> GoogleLLMService / Gemini (pulls google-genai>=2.19.0,<3)
+#   silero      -> SileroVADAnalyzer (needs onnxruntime, added below)
+#   websocket   -> FastAPIWebsocketTransport (pulls fastapi>=0.115.6)
+pipecat-ai[deepgram,elevenlabs,google,twilio,silero,websocket]==1.12.0
+
+# Silero VAD needs the ONNX runtime (NOT pulled in by pipecat-ai[silero] in 1.12.0).
+onnxruntime>=1.18.0
+
+# Twilio REST helper (TwiML building now, dial-out later). Free to install.
+twilio>=9.0.0
+
+# ASGI server for the FastAPI webhook + Media Streams endpoint.
+uvicorn[standard]>=0.30.0
+
+# .env loading.
+python-dotenv>=1.0.1
